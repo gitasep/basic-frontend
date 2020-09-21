@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Test v-html</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+    Belajar Dengan v-html =>
+    <div id="app" v-html="pesan"></div>
+
+    <p>
+      <a href="../0.2dasar-vue/" class="btn btn-sm btn-primary">Kembali >> </a> : Dasar-dasar Vue.js ?
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          pesan:'<b>Selamat Belajar Vue</b>'}
+        // script Selanjutnya
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Test v-if positif</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+    Belajar Dengan positif v-if
+    <div id="app">
+      <b v-if="tampil">{{pesan}}</b>
+    </div>
+    <p>
+      <a href="../0.3conditional/" class="btn btn-sm btn-primary">Kembali >> </a> : Conditional ?
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        tampil: true,
+        pesan:'Conditional Positif'}
+      // script Selanjutnya
+    })
+    </script>
+  </body>
+</html>

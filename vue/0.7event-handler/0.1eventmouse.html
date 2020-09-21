@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Mengatasi Klik Mouse dengan v-on:click</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+  Mengatasi Klik Mouse dengan v-on:click
+    <div id="app">
+      <button @click="pesan='Belajar dengan event click'">
+        Klik Untuk Melihat Pesan
+      </button>
+      <br> {{pesan}}
+    </div>
+    <p>
+      <a href="../0.7event-handler/" class="btn btn-sm btn-primary">Kembali >> </a> : Bermain dengan Form ?
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        pesan:''
+      }
+      // script Selanjutnya
+    })
+    </script>
+  </body>
+</html>

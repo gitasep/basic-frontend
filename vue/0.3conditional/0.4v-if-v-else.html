@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Test v-if & v-else </title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+    Belajar dengan v-if dan v-else
+    <div id="app">
+      <b v-if="makan">{{ya}}</b>
+      <p v-else="makan">{{tidak}}</p>
+    </div>
+    <p>
+      <a href="../0.3conditional/" class="btn btn-sm btn-primary">Kembali >> </a> : Conditional ?
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        makan: true, //ini bisa dirubah menjadi false
+        ya:'Jika lapar maka makan',
+        tidak:'Jika tidak lapar',
+      }
+      // script Selanjutnya
+    })
+    </script>
+  </body>
+</html>

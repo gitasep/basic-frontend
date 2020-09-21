@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Form Checkbox</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+  Form Checkbox
+    <div id="app">
+      <h3>Pilihan Hobby :</h3>
+      <input type="checkbox" id="cekmakan"v-model="ceklis" value="Makan">
+      <label for="cekmakan">Makan</label>
+      <input type="checkbox" id="cekminum"v-model="ceklis" value="Minum">
+      <label for="cekminum">Makan</label>
+      <h3>Hobby yang memilih : {{ceklis}}</h3>
+      <ul>
+        <li v-for="c in ceklis">{{c}}</li>
+      </ul>
+    </div>
+    <p>
+      <a href="../0.5form/" class="btn btn-sm btn-primary">Kembali >> </a> : Bermain dengan Form ?
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        ceklis: []
+      }
+      // script Selanjutnya
+    })
+    </script>
+  </body>
+</html>

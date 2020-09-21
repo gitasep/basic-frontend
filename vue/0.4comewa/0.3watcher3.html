@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Test Watcher</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+    Belajar Dengan Watcher
+    <div id="app">
+      <input type="password" v-model="isi" placeholder="type password">
+      <input type="password" v-model="isi2" placeholder="re-type password">
+      <p v-html="keterangan"></p>
+      <input type="submit" value="SignUp" v-if="tampil">
+    </div>
+    <p>
+      <a href="../0.4comewa/" class="btn btn-sm btn-primary">Kembali >> </a> : Conditional ?
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        isi: '',
+        isi2: '',
+        keterangan: '',
+        tampil: false
+      },
+      watch: {
+        isi2: 'ketik'
+      },
+      methods: {
+        ketik:function() {
+          if (this.isi2 == this.isi) {
+              this.keterangan = '<i>password sama</i>';
+              this.tampil = true;
+          } else {
+            this.keterangan = '<i>password tidak sama</i>';
+            this.tampil = false;
+          }
+        }
+      }
+      // script Selanjutnya
+    })
+    </script>
+  </body>
+</html>

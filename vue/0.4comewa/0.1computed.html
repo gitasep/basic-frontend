@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Test Computed</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+    Belajar Dengan Computed
+    <div id="app">
+      Hasil dari {{bil1}} + {{bil2}} adalah : {{juml}}
+    </div>
+    <p>
+      <a href="../0.4comewa/" class="btn btn-sm btn-primary">Kembali >> </a> : Conditional ?
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        bil1: 1,
+        bil2: 4
+      },
+      computed: {
+        juml: function () {
+          return  this.bil1 + this.bil2;
+        }
+      }
+      // script Selanjutnya
+    })
+    </script>
+  </body>
+</html>
