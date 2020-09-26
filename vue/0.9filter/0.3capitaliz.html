@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Capitalize</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+  Capitalize
+    <div id="app">
+      Normal : <b>{{pesan}}</b><br>
+      Huruf kapita awal : <b>{{pesan|capitalize}}</b><br>
+    </div>
+    <p>
+      <a href="../0.9filter/" class="btn btn-sm btn-primary">Kembali >> </a> : Filter ?
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        pesan: 'berhasil vue.js'
+      },
+      filters: {
+        capitalize: function (value) {
+          if (!value) return ''
+          value = value.toString()
+          return value.charAt(0).toUpperCase()+value.slice(1)
+        }
+      }
+      // script Selanjutnya
+    });
+    </script>
+  </body>
+</html>

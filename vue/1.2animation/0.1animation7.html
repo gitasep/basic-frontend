@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Animation 7</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <style>
+      .rubah-enter-active{
+        animation: animasi1 1s;
+      }
+      .rubah-leave-active{
+        animation: animasi2 1s;
+      }
+
+      @keyframes animasi1{
+        0% {
+          transform: scale(0);
+        }
+        70% {
+          transform: scale(2);
+        }
+        80% {
+          transform: scale(0.5);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      @keyframes animasi2{
+        0% {
+          transform: translateX(0);
+        }
+        5% {
+          transform: rotate(-5deg);
+        }
+        30% {
+          transform: rotate(70deg);
+          transform-origin: 0 0;
+        }
+        40% {
+          transform: rotate(30deg);
+          transform-origin: 0 0;
+        }
+        100% {
+          transform: translateY(100px);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+  Animation 7
+    <div id="app">
+      <button @click="tampil = !tampil">Klik Disini</button>
+      <transition name="rubah">
+        <p v-if="tampil">Ini adalah contoh transmisi</p>
+      </transition>
+    </div>
+      <a href="../1.2animation/" class="btn btn-sm btn-primary">Kembali >> </a> : Animation
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          tampil: false
+        }
+      });
+    </script>
+  </body>
+</html>

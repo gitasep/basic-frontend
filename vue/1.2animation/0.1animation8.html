@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Animation 8</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <style>
+      button {
+        position: absolute;
+      }
+      .rubah-enter,
+      .rubah-leave-to{
+        opacity: 0;
+      }
+      .rubah-enter-active,
+      .rubah-leave-active {
+        transition: opacity 1s;
+      }
+    </style>
+  </head>
+  <body>
+  Animation 8
+    <div id="app">
+      <transition name="rubah">
+        <button @click="tampil = !tampil" :key="tampil">
+          {{tampil ? 'on': 'off'}}
+        </button>
+      </transition>
+    </div>
+      <a href="../1.2animation/" class="btn btn-sm btn-primary">Kembali >> </a> : Animation
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          tampil: false
+        }
+      });
+    </script>
+  </body>
+</html>

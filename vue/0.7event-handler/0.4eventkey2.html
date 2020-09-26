@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Event Handler pada Tombol-Tombol Lannya</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+  Event Handler pada Tombol-Tombol Lannya
+    <div id="app">
+      <input type="text"
+             @keyup.ctrl.83='save'
+             @keyup.ctrl.67='copy'
+             @keyup.ctrl.88='cut'
+             @keyup.ctrl.86='paste'
+      >
+      {{hasil}}
+    </div>
+    <p>
+      <a href="../0.7event-handler/" class="btn btn-sm btn-primary">Kembali >> </a> : Bermain dengan Form ?
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        hasil: ''
+      },
+      methods: {
+        save: function () {this.hasil = 'Simpan'},
+        copy: function () {this.hasil = 'Salin'},
+        cut: function () {this.hasil = 'Potong'},
+        paste: function () {this.hasil = 'Tempel'}
+      }
+      // script Selanjutnya
+    })
+    </script>
+  </body>
+</html>

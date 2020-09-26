@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Passing Data dengan Props</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+  Passing Data dengan Props
+    <div id="app">
+      <nama @applied="validasi"></nama>
+      <b v-if="valid">Anda Telah Masukan Nama</b>
+    </div>
+    <p>
+      <a href="../1.0component/" class="btn btn-sm btn-primary">Kembali >> </a> : Filter ?
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+      Vue.component('nama', {
+        template: '<input type="text" placeholder="masukan nama" @blur="validasi">',
+        methods: {
+          validasi() {
+            this.$emit('applied')
+          }
+        }
+      });
+      var app = new Vue({
+        el: '#app',
+        data: {
+          valid: false
+        },
+        methods: {
+          validasi() {
+            this.valid = true;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

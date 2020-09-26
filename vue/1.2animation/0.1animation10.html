@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Animation 10</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <style>
+      .daftar-angka{
+        display: inline-block;
+        margin-right: 5px;
+      }
+      .daftar-enter{
+        transform: translateY(-30px);
+        opacity: 0;
+      }
+      .daftar-leave-to{
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      .daftar-enter-active,
+      .daftar-leave-active{
+        transition: all .5s;
+      }
+    </style>
+  </head>
+  <body>
+  Animation 10
+    <div id="app">
+      <button @click="tambah">Tambah</button>
+      <button @click="hapus">Hapus</button>
+      <transition-group tag="ul" name="daftar"><span v-for="bil in bilangan" :key="bil" class="daftar-angka">
+        {{bil}}
+      </span>
+    </div>
+      <a href="../1.2animation/" class="btn btn-sm btn-primary">Kembali >> </a> : Animation
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          bilangan: []
+        },
+        methods: {
+          tambah() {
+            this.bilangan.push(this.bilangan.length + 1)
+          },
+          hapus() {
+            Vue.delete(this.bilangan, this.bilangan.length - 1)
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

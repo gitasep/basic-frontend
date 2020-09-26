@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Program Search Array</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+  Program Search Array
+    <div id="app">
+      <label>
+        <input type="text" v-model="cari" placeholder="cari berdasarkan merk">
+      </label>
+      <ul v-for="kd in filterkendaraan">
+        <li>
+          Jenisnya : {{kd.jenis}},
+          Merknya : {{kd.merk}},
+          Warnanya : {{kd.warna}}
+        </li>
+      </ul>
+    </div>
+    <p>
+      <a href="../0.8array/" class="btn btn-sm btn-primary">Kembali >> </a> : Bermain dengan Form ?
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+    new Vue({
+      el: '#app',
+      data: {
+        cari: '',
+        kendaraan:[
+          {jenis:'Mobil', merk:'honda', warna:'merah'},
+          {jenis:'Motor', merk:'honda', warna:'hitam'},
+          {jenis:'Sepada', merk:'poligon', warna:'merah'}
+        ]
+      },
+      computed: {
+        filterkendaraan: function (){
+          return this.kendaraan.filter((kd)=>{
+            return kd.merk.match(this.cari)
+          });
+        }
+      }
+      // script Selanjutnya
+    })
+    </script>
+  </body>
+</html>

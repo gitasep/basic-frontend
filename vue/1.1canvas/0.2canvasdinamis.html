@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Canvas</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+  Canvas Dinamis
+    <div id="app">
+      <canvas v-gambar></canvas>
+    </div>
+    <p>
+      <a href="../1.1canvas/" class="btn btn-sm btn-primary">Kembali >> </a> : Filter ?
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          x: 10,
+          y: 10,
+          p: 50, //panjang
+          l: 50, //lebar
+          cl: 'blue' //warna
+        },
+        directives: {
+          gambar: function (el, binding, vnode) {
+            var c = el.getContext('2d');
+            var vc = vnode.context;
+            c.fillStyle = vc.cl;
+            c.fillRect(vc.x, vc.y, vc.p, vc.l)
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

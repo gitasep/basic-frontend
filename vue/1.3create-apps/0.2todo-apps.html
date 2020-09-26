@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <style>
+      .garis1{
+        text-decoration: red line-through;
+      }
+      .garis2{
+        text-decoration: none;
+      }
+      body{
+        background: rgb(6, 4, 43);
+        font-family: sans-serif;
+      }
+      #app{
+        max-width: 900px;
+        display: block;
+        margin: 0 auto;
+        margin-top: 70px;
+        box-sizing: border-box;
+      }
+
+      #judul{
+        font-size: 40px;
+        width: 100%;
+        display: grid;
+        text-align: center;
+        color: rgba(37, 197, 232, 0.8);
+      }
+      #baru{
+        width: 100%;
+        font-size: 30px;
+        margin-top: 20px;
+        padding-bottom: 10px;
+        background: rgb(6, 4, 43);
+        border: 0;
+        border-bottom: 1px dotted violet;
+        color: white;
+      }
+      li{
+        list-style: none;
+        display: flex;
+        width: 100%;
+      }
+
+      .todo{
+        padding-left: 10px;
+        font-size: 28px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border: 0;
+        margin-bottom: 5px;
+        border-bottom: 1px dotted violet;
+        background: rgb(6, 4, 43);
+        flex: 1;
+        color: rgb(74, 246, 31);
+      }
+      input[type="text"][disabled]{
+        color: white;
+      }
+      .button{
+        padding: 10px;
+        width: 40px;
+        height: 40px;
+        margin: 5px;
+        border: 0;
+        border-radius: 50%;
+        background: rgba(244,244, 249, 0.23);
+      }
+      .cekllisan{
+        background: greenyellow;
+      }
+      .cekllisan:hover{
+        background: orange;
+      }
+      .cekllisan:active{
+        background: orange;
+      }
+      .hapusan{
+        background: pink;
+      }
+      .hapusan:hover{
+        background: red;
+      }
+      .hapusan:active{
+        background: red;
+      }
+      .editan{
+        background: greenyellow;
+      }
+      .editan:hover{
+        background: green;
+      }
+      .editan:active{
+        background: green;
+      }
+      .kanan{
+        margin-right: 0;
+      }
+      i{
+       display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: orange;
+      }
+      .hapus{
+        background: rgb(6, 4, 43);
+        font-size: 20px;
+        padding: 10px;
+        border: 1px solid orange;
+        border-radius: 40px;
+        color: orange;
+      }
+      .selesai{
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    Todo Application
+    <div id="app">
+      <todo></todo>
+    </div>
+    <p>
+      <a href="../1.3create-apps" class="btn btn-sm btn-primary">Kembali >> </a> : Animation
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+      Vue.component('extractor', {
+        template: '' +
+                '<div>' +
+                  '<b id="judul">Vue ToDo List</b>'+
+                  '<input type="text" v-model="baru" @keyup.enter="tambah" id="baru" placeholder="ketik kegiatan, lalu tekan enter"/>'+
+                  '<i>daftar yang telah dibuat</i>'+
+                  '<li v-for="(i, index) in tugas">' +
+                    '<button @click="selesai(index, t.status)" :value="t.cek" class="button cekllisan"></button>'+
+                    '<input type="text" class="todo" :class="garis[index]" :disabled="t.dis" :value="t.kegiatan" v-model="t.kegiatan" />'+
+                    '<button @click="edit(index, t.dis)" class="button kanan editan"></button>'+
+                    '<button @click="hapus(index)" class="button kanan hapusan"></button>'+
+                  '</li>'+
+                  '<div>' +
+                  '<button @click="hapusselesai" class="hapus">' +
+                  'Hapus kegiatan yang telah diceklis</button>'+
+                  '<button @click="hapussemua" class="hapus selesai">' +
+                  'Hapus semua kegiatan</button>'+
+                  '</div>'+
+                '</div>',
+        data() {
+          return {
+            tugas  : [],
+            garis  : [],
+            baru   : ''
+          }
+        },
+        methods: {
+          tambah() {
+            if (this.baru == ''){
+              alert('Silahkan diisi dulu')
+            } else {
+              this.tugas.push({
+                kegiatan: this.baru,
+                cek: false,
+                status: 'belum selesai',
+                dis: true
+              })
+            }
+            this.baru = ''
+          },
+          selesai(index, nilai){
+            if (nilai == 'belum selesai') {
+              this.tugas[index].cek = true,
+                      this.garis[index] = 'garis1',
+                      this.tugas[index].status = 'belum selesai'
+            }
+          },
+          edit(index, val){
+            if (val == true) {
+              this.tugas[index].dis = false
+            } else {
+              this.tugas[index].dis = true
+            }
+          },
+          hapus(index) {
+            Vue.delete(this.tugas, index)
+          },
+          hapusselesai() {
+            for (i = this.tugas.length - 1; i>= 0; i--) {
+              if (this.tugas[i].status === 'selesai') {
+                Vue.delete(this.tugas, i)
+              }
+              this.garis[i] = 'garis2'
+            }
+          },
+          hapusselesai() {
+            this.tugas = []
+          }
+        }
+      });
+      var app = new Vue({
+        el: '#app'
+      });
+    </script>
+  </body>
+</html>

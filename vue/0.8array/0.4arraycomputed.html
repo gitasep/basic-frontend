@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Array dan Computed Property</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+  Array dan Computed Property
+    <div id="app">
+      <h1>Data Seluruh Kendaraan</h1>
+      <ul>
+        <li v-for="kd in kendaraan" v-text="kd.jenis"></li>
+      </ul>
+      <h1>Data Kendaraan Tersidia</h1>
+      <ul>
+        <li v-for="kd in kendaraanAda" v-text="kd.jenis"></li>
+      </ul>
+      <h1>Data Kendaraan Tidak Tersedia</h1>
+      <ul>
+        <li v-for="kd in kendaraanHabis" v-text="kd.jenis"></li>
+      </ul>
+    </div>
+    <p>
+      <a href="../0.8array/" class="btn btn-sm btn-primary">Kembali >> </a> : Bermain dengan Form ?
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+    new Vue({
+      el: '#app',
+      data: {
+        kendaraan: [
+          {jenis: 'mobil', stock: false },
+          {jenis: 'motor', stock: true},
+          {jenis: 'sepada', stock: true}
+        ]
+      },
+      computed: {
+        kendaraanAda (){
+          return this.kendaraan.filter(kd => kd.stock)
+        },
+        kendaraanHabis (){
+          return this.kendaraan.filter(kd => !kd.stock)
+        }
+      }
+      // script Selanjutnya
+    })
+    </script>
+  </body>
+</html>

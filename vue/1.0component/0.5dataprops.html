@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Passing Data dengan Props</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+  Passing Data dengan Props
+    <div id="app">
+      <karya judul="cinta" isi="cinta adalah ruang dan waktu"></karya>
+    </div>
+    <p>
+      <a href="../1.0component/" class="btn btn-sm btn-primary">Kembali >> </a> : Filter ?
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+      Vue.component('karya', {
+        props: ['judul', 'isi'],
+        template: '<div><h2>{{ judul }}</h2><p>{{ isi }}</p></div>'
+      });
+      var app = new Vue({
+        el: '#app'
+      });
+    </script>
+  </body>
+</html>

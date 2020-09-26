@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Review Components</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+  Review Components
+    <div id="app">
+      <kendaraan></kendaraan>
+    </div>
+    <p>
+      <a href="../1.0component/" class="btn btn-sm btn-primary">Kembali >> </a> : Filter ?
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+      Vue.component('kendaraan', {
+        template: '<div>' +
+                '<h1 v-if="tampjdl">Pilih Hadiah Anda</h1>'+
+                '<isi v-for="(kd, index) in kendaraan" v-if="tamppil">' +
+                '{{kd.jenis}}' +
+                '<button @click="klik(index)" v-if="tampalert">Pilih</button> '+
+                '</isi>'+
+                '<h1 v-if="tamphsl">Silahkan Ambil Hadiah anda di sekitar</h1>'+
+                '</div>',
+        data: function (){
+          return {
+           kendaraan: [
+             {jenis: 'mobil'},
+             {jenis: 'motor'},
+             {jenis: 'pesawat'}
+           ],
+            tampalert: true,
+            tamppil: true,
+            tampjdl: true,
+            tamphsl: false
+          }
+        },
+        methods: {
+          klik(index) {
+            alert('selamat anda mendapatkan ' + this.kendaraan[index].jenis);
+            this.tampalert = false,
+                    this.tamppil = false,
+                    this.tampjdl = false,
+                    this.tamphsl = true
+          }
+        }
+      });
+      Vue.component('isi', {
+        template: '<li><slot></slot></li>'
+      })
+      var app = new Vue({
+        el: '#app'
+      });
+    </script>
+  </body>
+</html>

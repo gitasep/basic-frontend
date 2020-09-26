@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Slot dan Array</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+  Slot dan Array
+    <div id="app">
+      <daftar></daftar>
+    </div>
+    <p>
+      <a href="../1.0component/" class="btn btn-sm btn-primary">Kembali >> </a> : Filter ?
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+      Vue.component('daftar', {
+        template: '<div><siswa v-for="s in daftarsiswa">{{s.nama}} kelas {{s.kelas}}</siswa></div>',
+        data: function (){
+          return {
+            daftarsiswa:[
+              {nama:'eka', kelas: '1'},
+              {nama:'dida', kelas: '3'},
+              {nama:'soya', kelas: '2'}
+            ]
+          };
+        }
+      });
+      Vue.component('siswa',{
+        template: '<li><slot></slot></li>'
+      });
+      var app = new Vue({
+        el: '#app'
+      });
+    </script>
+  </body>
+</html>

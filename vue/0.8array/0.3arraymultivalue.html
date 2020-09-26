@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Array Multivalue</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+  Array Multivalue
+    <div id="app">
+      <ul>
+        <li v-for="kd in kendaraan">
+          jenisnya : {{kd.jenis}},
+          merknya : {{kd.merk}},
+          warnanya : {{kd.warna}}
+        </li>
+      </ul>
+    </div>
+    <p>
+      <a href="../0.8array/" class="btn btn-sm btn-primary">Kembali >> </a> : Bermain dengan Form ?
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+    new Vue({
+      el: '#app',
+      data: {
+        kendaraan: [
+          {jenis: 'mobil', merk:'honda', warna:'merah'},
+          {jenis: 'motor', merk:'honda', warna:'hitam'},
+          {jenis: 'sepada', merk:'phoenix', warna:'biru'}
+        ]
+      }
+      // script Selanjutnya
+    })
+    </script>
+  </body>
+</html>

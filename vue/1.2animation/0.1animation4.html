@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Animation 4</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <style>
+      p{
+        color: green;
+      }
+      .v-enter,
+      .v-enter-to{
+        opacity: 0;
+        color: orange;
+      }
+      .v-enter-to,
+      .v-leave{
+        opacity: 1;
+      }
+      .v-leave-to{
+        color: yellow;
+      }
+      .v-enter-active,
+      .v-leave-active{
+        transition: all 1s;
+      }
+    </style>
+  </head>
+  <body>
+  Animation 4
+    <div id="app">
+      <button @click="tampil = !tampil">Klik Disini</button>
+      <transition>
+        <p v-if="tampil">Ini adalah contoh transmisi</p>
+      </transition>
+    </div>
+      <a href="../1.2animation/" class="btn btn-sm btn-primary">Kembali >> </a> : Animation
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          tampil: false
+        }
+      });
+    </script>
+  </body>
+</html>

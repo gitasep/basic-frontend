@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Canvas</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div id="app">
+      <canvas width="600" height="600" v-gambar></canvas>
+    </div>
+    <p>
+      <a href="../1.1canvas/" class="btn btn-sm btn-primary">Kembali >> </a> : Filter ?
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          x: 10,
+          y: 10,
+          p: 50, //panjang
+          l: 50, //lebar
+          cl: 'blue', //warna
+          cl1: 'red', //warna
+          cl2: 'yellow', //warna
+          cl3: 'black' //warna
+        },
+        directives: {
+          gambar: function (el, binding, vnode) {
+            var c = el.getContext('2d');
+            var vc = vnode.context;
+            // Mebuat Garis
+            c.beginPath();
+            c.moveTo(10, 100);
+            c.lineTo(30, 40);
+            c.lineTo(40, 80);
+            c.lineTo(80, 10);
+            c.lineTo(100, 50);
+            c.lineTo(150, 5);
+            c.strokeStyle = vc.cl;
+            c.stroke();
+
+            // Membuat Lingkaran
+            c.beginPath();
+            c.arc(150, 75, 30, 0, Math.PI * 2, false);
+            c.strokeStyle = vc.cl1;
+            c.stroke();
+
+            //Membuat Teks
+            c.font = '20px arial';
+            c.fillStyle = vc.cl2;
+            c.strokeText('contoh tulisan', 200, 50);
+            c.fillText('contoh tulisan', 200, 100);
+            c.beginPath();
+
+            //Membuat kurva
+
+            c.moveTo(500, 100);
+            c.bezierCurveTo(200, 10, 400, 10, 400, 100);
+            c.strokeStyle = vc.cl3;
+            c.stroke();
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

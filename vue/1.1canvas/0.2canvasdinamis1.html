@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Canvas</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div id="app">
+      <canvas v-gambar></canvas>
+    </div>
+    <p>
+      <a href="../1.1canvas/" class="btn btn-sm btn-primary">Kembali >> </a> : Filter ?
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          x: 10,
+          y: 10,
+          p: 50, //panjang
+          l: 50, //lebar
+          cl: 'blue', //warna
+          cl1: 'red', //warna
+          cl2: 'yellow', //warna
+          cl3: 'black' //warna
+        },
+        directives: {
+          gambar: function (el, binding, vnode) {
+            var c = el.getContext('2d');
+            var vc = vnode.context;
+            c.fillStyle = vc.cl;
+            c.fillRect(vc.x, vc.y, vc.p, vc.l);
+            c.fillStyle = vc.cl1;
+            c.fillRect(vc.x + 55, vc.y, vc.p, vc.l);
+            c.fillStyle = vc.cl2;
+            c.fillRect(vc.x, vc.y + 55, vc.p, vc.l);
+            c.fillStyle = vc.cl3;
+            c.fillRect(vc.x + 55, vc.y + 55, vc.p, vc.l)
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

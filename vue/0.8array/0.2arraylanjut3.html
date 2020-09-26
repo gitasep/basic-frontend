@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Menghapus data Array</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body>
+  Menghapus data Array
+    <div id="app">
+      <input type="text" v-model="isi">
+      <button @click="tambah">Tambah Data</button>
+      <ul>
+        <li v-for="(kd, index) in kendaraan">
+          <button v-on:click="hapus(index)">x</button>{{kd}}
+        </li>
+      </ul>
+    </div>
+    <p>
+      <a href="../0.8array/" class="btn btn-sm btn-primary">Kembali >> </a> : Bermain dengan Form ?
+    </p>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+    new Vue({
+      el: '#app',
+      data: {
+        isi: '',
+        kendaraan: ['sepeda', 'motor', 'mobil']
+      },
+      methods: {
+        tambah: function () {
+          this.kendaraan.push(this.isi)
+          this.isi = ''
+        },
+        hapus (index) {
+          this.kendaraan.splice(index,1)
+        }
+      }
+      // script Selanjutnya
+    })
+    </script>
+  </body>
+</html>
