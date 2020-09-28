@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Simulasi Biling Toko</title>
+    <link rel="stylesheet" href="../../vendor/bootstrap/css/bootstrap.min.css">
+    <style>
+      /* mengatur body program */
+      body{
+        font-family: sans-serif;
+        font-size: 20px;
+        color: white;
+      }
+      /* mengatur judul */
+      #judul{
+        font-size: 35px;
+        text-align: center;
+        display: block;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        color: orange;
+      }
+      /* mengatur ukuran program, segala sesuatu didalam id="app" */
+      #app{
+        width: 500px;
+        margin: 0 auto;
+        display: block;
+      }
+      /* mengatur pilihan */
+      .pilihan{
+        padding: 15px;
+        margin-top: 5px;
+        cursor: pointer;
+      }
+      /* mengatur warna jika pilihan tidak terselesai */
+      .unselect{
+        background: green;
+      }
+      /* mengatur warna terseleksi jika pilihan terseleksi */
+      .selected {
+        background: red;
+      }
+      /* mengatur nilai dolar */
+      .kanan {
+        float: right;
+      }
+      /* mengatur total */
+      .total {
+        border-top: 1px solid orange;
+        border-bottom: 1px solid orange;
+      }
+      /* mengatur warna total */
+      .hasil {
+        color: green;
+      }
+      /* mengatur tombol "lanjut ke pembayaran" */
+      .tombol {
+        font-size: 20px;
+        padding: 10px;
+        background: green;
+        border: 1px grey solid;
+        display: block;
+        margin: 0 auto;
+        color: yellow;
+        margin-top: 30px;
+      }
+      /* mengatur tombol "lanjut ke pembayaran" saat mouse lewat diatasnya */
+      .tombol:hover {
+        background: orange;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    Biling Toko
+    <div id="app">
+      <billing></billing>
+    </div>
+    <p>
+      <a href="../1.3create-apps" class="btn btn-sm btn-primary">Kembali >> </a> : Animation
+    </p>
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+    <script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../src/vue.min.js"> </script>
+    <script>
+      Vue.component('billing',{
+        template :
+                '<div>'+
+                    '<b id="judul"> Silahkan Pilih Barang</b>'+
+                    '<div v-for="(a, index) in menu" :class="a.active?"unselect":"selected"">'+
+                        '<div href="#" @click="pilih(index)" class="pilihan">'+
+                            '<b class="kiri">{{a.barang}}</b>'+
+                            '<b class="kanan">$ {{a.harga}}</b>'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="pilihan total">'+
+                        '<b class="kiri hasil">Total : </b>'+
+                        '<b class="kanan hasil">$ {{total}}</b>'+
+                    '</div>'+
+                    '<button class="tombol" @click="lanjut">Lanjut ke pembayaran >></button>'+
+                '</div>',
+        data(){
+          return{
+            menu: [
+              {barang: 'monitor samsung', active: false, harga: 200},
+              {barang: 'mouse logitec', active: false, harga: 300},
+              {barang: 'keyboard LG', active: false, harga: 400},
+              {barang: 'printer brother', active: false, harga: 500},
+            ],
+            total: 0
+          }
+        },
+        methods: {
+          pilih(index) {
+            this.menu[index].active = !this.menu[index].active
+            if (this.menu[index].active == true) {
+              this.total += this.menu[index].harga
+            } else if (this.menu[index].active == false) {
+              this.total -= this.menu[index].harga
+            }
+          },
+          lanjut() {
+            alert('Total tagihan anda : $ ' + this.total + ' .')
+          }
+        }
+      });
+      var app = new Vue({
+        el: '#app'
+      });
+    </script>
+  </body>
+</html>

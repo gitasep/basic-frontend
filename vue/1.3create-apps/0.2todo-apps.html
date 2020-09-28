@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../vendor/bootstrap/css/bootstrap.min.css">
     <style>
       .garis1{
         text-decoration: red line-through;
@@ -127,28 +127,25 @@
     <p>
       <a href="../1.3create-apps" class="btn btn-sm btn-primary">Kembali >> </a> : Animation
     </p>
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+    <script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../src/vue.min.js"> </script>
     <script>
-      Vue.component('extractor', {
-        template: '' +
+      Vue.component('todo', {
+        template: '<div>'+
+                '<b id="judul">Vue ToDo List</b>'+
+                '<input type="text" v-model="baru" @keyup.enter="tambah" id="baru" placeholder="ketik kegiatan, lalu tekan enter"/>'+
+                '<i>daftar yang telah dibuat</i>'+
+                '<li v-for="(i, index) in tugas">' +
+                '<button @click="selesai(index, t.status)" :value="t.cek" class="button cekllisan"></button>'+
+                '<input type="text" class="todo" :class="garis[index]" :disabled="t.dis" :value="t.kegiatan" v-model="t.kegiatan" />'+
+                '<button @click="edit(index, t.dis)" class="button kanan editan"></button>'+
+                '<button @click="hapus(index)" class="button kanan hapusan"></button>'+
+                '</li>'+
                 '<div>' +
-                  '<b id="judul">Vue ToDo List</b>'+
-                  '<input type="text" v-model="baru" @keyup.enter="tambah" id="baru" placeholder="ketik kegiatan, lalu tekan enter"/>'+
-                  '<i>daftar yang telah dibuat</i>'+
-                  '<li v-for="(i, index) in tugas">' +
-                    '<button @click="selesai(index, t.status)" :value="t.cek" class="button cekllisan"></button>'+
-                    '<input type="text" class="todo" :class="garis[index]" :disabled="t.dis" :value="t.kegiatan" v-model="t.kegiatan" />'+
-                    '<button @click="edit(index, t.dis)" class="button kanan editan"></button>'+
-                    '<button @click="hapus(index)" class="button kanan hapusan"></button>'+
-                  '</li>'+
-                  '<div>' +
-                  '<button @click="hapusselesai" class="hapus">' +
-                  'Hapus kegiatan yang telah diceklis</button>'+
-                  '<button @click="hapussemua" class="hapus selesai">' +
-                  'Hapus semua kegiatan</button>'+
-                  '</div>'+
+                '<button @click="hapusselesai" class="hapus">Hapus kegiatan yang telah diceklis</button>'+
+                '<button @click="hapussemua" class="hapus selesai">Hapus semua kegiatan</button>'+
+                '</div>'+
                 '</div>',
         data() {
           return {
@@ -175,6 +172,10 @@
             if (nilai == 'belum selesai') {
               this.tugas[index].cek = true,
                       this.garis[index] = 'garis1',
+                      this.tugas[index].status = 'selesai'
+            } else {
+              this.tugas[index].cek = false,
+                      this.garis[index] = 'garis2',
                       this.tugas[index].status = 'belum selesai'
             }
           },
@@ -196,7 +197,7 @@
               this.garis[i] = 'garis2'
             }
           },
-          hapusselesai() {
+          hapussemua() {
             this.tugas = []
           }
         }
